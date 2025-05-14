@@ -1,0 +1,23 @@
+Calcium ions (Ca²⁺) are involved in many bodily processes. For example, this ion functions as a secondary messenger in cells, plays a role in the transmission of impulses in the nervous system, and is essential for muscle contraction. Each of these is a vital function. The body maintains the Ca²⁺ concentration in the blood within the normal range of 2.10–2.55 mmol/L, with the biologically active (ionized) form typically between 1.1–1.3 mmol/L.
+
+When the Ca²⁺ level is too low (hypocalcemia), the body extracts Ca²⁺ from the bones, which weakens them. This can lead to bone loss (osteoporosis) and symptoms such as muscle cramps, tingling, or cardiac arrhythmias.
+
+An excessively high Ca²⁺ level (hypercalcemia) can cause nausea, constipation, abdominal pain, and in severe cases, kidney stones or neurological issues.
+
+The organs that regulate the Ca²⁺ concentration in the blood are the thyroid gland and the parathyroid glands. Receptors in the cell membranes of thyroid cells respond to the Ca²⁺ concentration in the blood.
+
+When the concentration rises above 2.55 mmol/L, the thyroid cells secrete calcitonin. Calcitonin inhibits osteoclast activity, stimulating bone cells (osteoblasts) to absorb Ca²⁺ from the blood plasma and reduces Ca²⁺ reabsorption in the kidneys (specifically in the nephrons). This leads to a decrease in the Ca²⁺ concentration in the blood plasma.
+
+If the Ca²⁺ concentration in the blood decreases, the four parathyroid glands respond. Like thyroid cells, the membranes of these cells also have Ca²⁺ receptors. At high Ca²⁺ concentrations, these receptors inhibit the activity of the parathyroid cells. At low Ca²⁺ concentrations, the parathyroid cells secrete parathyroid hormone (PTH).
+
+PTH raises blood Ca²⁺ levels in three ways:
+
+It stimulates osteoclasts to break down bone tissue and release Ca²⁺.
+
+It enhances reabsorption of Ca²⁺ in the kidneys.
+
+It promotes the production of active vitamin D (calcitriol) in the kidneys.
+
+Calcitriol increases the absorption of Ca²⁺ from food in the intestines. Skin cells produce the prohormone vitamin D from cholesterol under the influence of sunlight. After further processing in the liver, the (still inactive) vitamin D reaches the kidneys, where it is converted to its active form.
+
+As a result of the actions of PTH and calcitriol, the Ca²⁺ concentration in the blood returns to normal.

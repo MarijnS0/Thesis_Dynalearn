@@ -1,0 +1,10 @@
+Calcium ions (Ca²⁺) are involved in many bodily processes. For example, this ion functions as a secondary messenger in cells, plays a role in the transmission of impulses in the nervous system, and is essential for muscle contraction. Each of these is a vital function. The body maintains the Ca²⁺ concentration in the blood within the normal range of 2.10–2.55 mmol/L.
+When the Ca²⁺ level is too low, the body extracts Ca²⁺ from the bones, which weakens them. This can lead to bone loss (osteoporosis).
+An excessively high Ca²⁺ level can cause stomach and intestinal complaints.
+The organs that regulate the Ca²⁺ concentration in the blood are the thyroid gland and the parathyroid glands. Receptors in the cell membranes of thyroid cells respond to the Ca²⁺ concentration in the blood.
+When the concentration rises above 2.55 mmol/L, the thyroid cells secrete calcitonin. Calcitonin stimulates bone cells to absorb Ca²⁺ from the blood plasma and inhibits the nephron cells from reabsorbing Ca²⁺ from the pre-urine. This leads to a decrease in the Ca²⁺ concentration in the blood plasma.
+If the Ca²⁺ concentration in the blood decreases, the four tiny parathyroid glands respond. Like thyroid cells, the membranes of these cells also have Ca²⁺ receptors.
+At high Ca²⁺ concentrations, these receptors inhibit the activity of the cells. At low Ca²⁺ concentrations, the parathyroid cells secrete parathyroid hormone (PTH). This hormone causes Ca²⁺ to be released from the bones and promotes greater reabsorption of Ca²⁺ from the pre-urine by the nephron cells.
+PTH also stimulates nephron cells to produce active vitamin D (calcitriol). This hormone stimulates intestinal cells to absorb more Ca²⁺ from food.
+Skin cells produce the prohormone vitamin D from cholesterol under the influence of sunlight. After further processing in the liver, the (still inactive) vitamin D reaches the kidneys. Only there, through conversion, is active vitamin D formed.
+As a result of the actions of PTH and vitamin D, the Ca²⁺ concentration in the blood increases.

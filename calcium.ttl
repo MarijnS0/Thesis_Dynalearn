@@ -1,0 +1,63 @@
+@prefix : <http://example.org/calcium#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rel: <http://example.org/relation#> .
+@prefix type: <http://example.org/type#> .
+
+# Type-annotaties
+:Ca2_Concentration_Blood rdf:type type:Quantity .
+:Ca2_Concentration_Bloodplasma rdf:type type:Quantity .
+:Ca2_Out_Urine rdf:type type:Quantity .
+:Ca2_From_Food rdf:type type:Quantity .
+:Low_Ca2 rdf:type type:Quantity .
+:High_Ca2 rdf:type type:Quantity .
+
+:Body rdf:type type:Entitie .
+:Bones rdf:type type:Entitie .
+:Thyroid rdf:type type:Entitie .
+:Parathyroid rdf:type type:Entitie .
+:Thyroid_Cells rdf:type type:Entitie .
+:Parathyroid_Cells rdf:type type:Entitie .
+:Calcitonin rdf:type type:Entitie .
+:PTH rdf:type type:Entitie .
+:Calcitriol rdf:type type:Entitie .
+:Intestinal_Cells rdf:type type:Entitie .
+:Kidney_Cells rdf:type type:Entitie .
+:Food rdf:type type:Entitie .
+:Skin_Cells rdf:type type:Entitie .
+:Cholesterol rdf:type type:Entitie .
+:Sunlight rdf:type type:Entitie .
+:Membrane_Receptors rdf:type type:Entitie .
+:Bone_Cells rdf:type type:Entitie .
+:Osteoporosis rdf:type type:Entitie .
+:Gastrointestinal_Symptoms rdf:type type:Entitie .
+
+# Causale relaties
+:Ca2_Concentration_Blood rel:negativeInfluence :Bones .
+:Bones rel:positiveInfluence :Ca2_Concentration_Blood .
+:Low_Ca2 rel:positiveInfluence :Osteoporosis .
+:High_Ca2 rel:positiveInfluence :Gastrointestinal_Symptoms .
+
+:Membrane_Receptors rel:configuration :Ca2_Concentration_Blood .
+:Ca2_Concentration_Blood rel:positiveInfluence :Thyroid_Cells .
+:Thyroid_Cells rel:configuration :Calcitonin .
+:Calcitonin rel:positiveInfluence :Bone_Cells .
+:Bone_Cells rel:negativeInfluence :Ca2_Concentration_Bloodplasma .
+:Calcitonin rel:negativeInfluence :Kidney_Cells .
+:Kidney_Cells rel:negativeInfluence :Ca2_Out_Urine .
+
+:Ca2_Concentration_Blood rel:positiveInfluence :Parathyroid .
+:High_Ca2 rel:negativeInfluence :Parathyroid_Cells .
+:Low_Ca2 rel:positiveInfluence :Parathyroid_Cells .
+:Parathyroid_Cells rel:configuration :PTH .
+:PTH rel:positiveInfluence :Bones .
+:Bones rel:positiveInfluence :Ca2_Concentration_Blood .
+:PTH rel:positiveInfluence :Kidney_Cells .
+:Kidney_Cells rel:positiveInfluence :Ca2_Out_Urine .
+:PTH rel:configuration :Calcitriol .
+:Calcitriol rel:positiveInfluence :Intestinal_Cells .
+:Intestinal_Cells rel:positiveInfluence :Ca2_From_Food .
+:Ca2_From_Food rel:positiveInfluence :Ca2_Concentration_Blood .
+
+:Skin_Cells rel:configuration :Vitamine_D .
+:Sunlight rel:configuration :Skin_Cells .
+:Cholesterol rel:configuration :Vitamine_D .
