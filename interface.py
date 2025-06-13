@@ -31,6 +31,8 @@ def main():
             if quantities:
                 st.success("Quantity extraction complete!")
                 st.header("4 Relation Extraction")
+                
+                entities = [item for item in entities if item not in quantities]
                 relations = knowgen.relations_human_loop(text, entities, quantities, topic)
 
                 if relations:
