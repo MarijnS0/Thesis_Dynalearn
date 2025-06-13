@@ -13,8 +13,7 @@ import os
 
 
 # Load API key
-api_key = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=api_key)
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 
 # read the textfile
