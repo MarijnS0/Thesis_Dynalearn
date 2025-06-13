@@ -12,7 +12,6 @@ client = OpenAI(api_key="sk-proj-rdOUYjdh5nVjV6ldUiQXlGno_iyH1jGkK8I4bwO3YZz7pfU
 # Entity functions
 def expand_entity_list(text, entity_list, topic):
     print("expand entity")
-    st.write("in function")
 
     # increase = input("please insert an input between 0 and 100: ")
     increase = 20
@@ -49,7 +48,6 @@ def expand_entity_list(text, entity_list, topic):
 
 def contract_entity_list(text, entity_list, topic):
     print("contract entity")
-    st.write("in function")
 
     # decrease = input("please insert an input between 0 and 100: ")
     decrease = 20
@@ -86,7 +84,6 @@ def contract_entity_list(text, entity_list, topic):
 
 def add_entities(entity_list, new_entities_input):
     print("add entity")
-    st.write("in function")
 
     # new_entities_input = input("Please insert the entities you would like to add seperated by a comma: ")
 
@@ -122,7 +119,6 @@ def remove_entities(entity_list, remove_entities_input):
 
 def expand_quantity_list(text, entity_list, quantity_list, topic):
     print("expand quantity")
-    st.write("in function")
 
     # increase = input("please insert an input between 0 and 100: ")
     increase = 20
@@ -158,7 +154,6 @@ def expand_quantity_list(text, entity_list, quantity_list, topic):
 
 def contract_quantity_list(text, entity_list, quantity_list, topic):
     print("contract quantity")
-    st.write("in function")
 
     # decrease = input("please insert an input between 0 and 100: ")
     decrease = 20
@@ -195,7 +190,6 @@ def contract_quantity_list(text, entity_list, quantity_list, topic):
 
 def add_quantities(quantity_list, new_quantity_input):
     print("add quantity")
-    st.write("in function")
 
     # new_quantity_input = input("Please insert the quantities you would like to add seperated by a comma: ")
 
@@ -206,7 +200,6 @@ def add_quantities(quantity_list, new_quantity_input):
 
 def remove_quantities(quantity_list, remove_quantity_input):
     print("remove quantity")
-    st.write("in function")
 
     # remove_quantity_input = input("Please insert the quantities you would like to remove seperated by a comma: ")
 
@@ -268,19 +261,6 @@ def expand_relation_list(text, entity_list, quantity_list, relation_list, topic)
         print("Raw output:\n", raw_output)
         relations_list = []
 
-
-    # # Clean raw output from code blocks and variable assignment
-    # cleaned = re.sub(r"^```(?:python)?\n?", "", raw_output.strip(), flags=re.IGNORECASE)
-    # cleaned = re.sub(r"\n?```$", "", cleaned.strip())
-    # cleaned = re.sub(r"^\s*\w+\s*=\s*", "", cleaned.strip())
-
-    # try:
-    #     relations_list = ast.literal_eval(cleaned)
-    # except Exception as e:
-    #     print("Failed to parse cleaned model output:", e)
-    #     print("Cleaned output:\n", cleaned)
-    #     relations_list = []
-
     return relations_list
 
 
@@ -324,19 +304,6 @@ def contract_relation_list(text, entity_list, quantity_list, relation_list, topi
         print("Failed to parse model output:", e)
         print("Raw output:\n", raw_output)
         relations_list = []
-
-
-    # # Clean raw output from code blocks and variable assignment
-    # cleaned = re.sub(r"^```(?:python)?\n?", "", raw_output.strip(), flags=re.IGNORECASE)
-    # cleaned = re.sub(r"\n?```$", "", cleaned.strip())
-    # cleaned = re.sub(r"^\s*\w+\s*=\s*", "", cleaned.strip())
-
-    # try:
-    #     relations_list = ast.literal_eval(cleaned)
-    # except Exception as e:
-    #     print("Failed to parse cleaned model output:", e)
-    #     print("Cleaned output:\n", cleaned)
-    #     relations_list = []
 
     return relations_list
 
