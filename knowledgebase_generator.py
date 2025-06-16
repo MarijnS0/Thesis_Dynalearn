@@ -114,6 +114,8 @@ def extracting_relations(text, entities, quantities):
 
     raw_output = response.choices[0].message.content
 
+    st.write(raw_output)
+
     # Clean raw output from code blocks and variable assignment
     cleaned = re.sub(r"^```(?:python)?\n?", "", raw_output.strip(), flags=re.IGNORECASE)
     cleaned = re.sub(r"\n?```$", "", cleaned.strip())
@@ -136,6 +138,8 @@ def extracting_relations(text, entities, quantities):
         print("Failed to parse cleaned model output:", e)
         print("Cleaned output:\n", cleaned)
         relations_list = []
+
+    st.write(relations_list)
 
     return relations_list
 
