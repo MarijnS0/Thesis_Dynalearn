@@ -7,7 +7,7 @@ import streamlit as st
 
 
 # Load API key
-client = OpenAI(api_key="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")
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Entity functions
 def expand_entity_list(text, entity_list, topic):
