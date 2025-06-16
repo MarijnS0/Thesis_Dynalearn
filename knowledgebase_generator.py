@@ -31,26 +31,39 @@ def extract_entities(text, topic):
             {"role": "system", "content": "You extract conceptual entities from a text on a specific topic from a textbook used in secondary education. Return only a valid Python dictionary as JSON, and do NOT wrap the result in code blocks."},
             {"role": "user", "content": prompt}
         ],
-        temperature=0, # Makes it not random, but very predictable
-        max_tokens=200
+        temperature=0 # Makes it not random, but very predictable
     )
 
     # Extract the string content from the response object properly
-    content = response.choices[0].message.content
+    content = response.choices[0].message.content.strip()
 
-    # Strip the ```python ... ``` block if present
-    if content.startswith("```python"):
-        content = content.strip("```python").strip("```").strip()
 
-    # Now safely load as a Python dictionary
+    # Clean up code block markers if present
+    content = re.sub(r"```(?:json|python)?\n?", "", content).strip("` \n")
+
+    # st.text("RAW RESPONSE:")
+    # st.text(content)
+
     try:
         result_dict = json.loads(content)
     except json.JSONDecodeError as e:
-        print("Failed to parse GPT output. Raw content:")
-        print(content)
+        st.error("Could not parse the model output as JSON.")
+        st.text(content)
         raise e
 
-    print(result_dict)
+    # # Strip the ```python ... ``` block if present
+    # if content.startswith("```python"):
+    #     content = content.strip("```python").strip("```").strip()
+
+    # # Now safely load as a Python dictionary
+    # try:
+    #     result_dict = json.loads(content)
+    # except json.JSONDecodeError as e:
+    #     print("Failed to parse GPT output. Raw content:")
+    #     print(content)
+    #     raise e
+
+    # print(result_dict)
     return list(set(result_dict['entities']))
 
 # identify the quantities from the entity list
@@ -64,8 +77,7 @@ def extract_quantities(entity_list, text):
             {"role": "system", "content": "You extract quantities from a list of entities that is extracted from a given text from a textbook used in secondary education. Return only a valid Python dictionary as JSON, and do NOT wrap the result in code blocks. Only choose terms from the given list"},
             {"role": "user", "content": prompt}
         ],
-        temperature=0.0,
-        max_tokens=200
+        temperature=0.0
     )
 
     # Extract the string content from the response object properly
