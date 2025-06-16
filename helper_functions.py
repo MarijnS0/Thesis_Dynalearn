@@ -29,6 +29,7 @@ def expand_entity_list(text, entity_list, topic):
 
     # Extract the string content from the response object properly
     content = response.choices[0].message.content
+    st.write(content)
 
     # Strip the ```python ... ``` block if present
     if content.startswith("```python"):
@@ -43,6 +44,7 @@ def expand_entity_list(text, entity_list, topic):
         raise e
 
     print(result_dict)
+    st.write(result_dict)
     return list(set(result_dict['entities']))
 
 
