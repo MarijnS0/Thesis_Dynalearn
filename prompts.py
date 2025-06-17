@@ -435,6 +435,7 @@ def expansion_relations(text, entity_list, quantity_list, relation_list, topic, 
     - Every used quantity must be a property to at least one entity.
     - When all possible relations are extracted, do not increase the list further.
     - If no new relations can be extracted, return the original relation list unchanged.
+    - You can increase the list to be a maximum of 200 relations.
     - You do not have to use all the entities and quantities, only those that are involved in a relation, described in the given text.
     - Return a list of relations as [subject, relation_type, object] triples, where subject and object must be from the list entities or the list quantities. Do not include any explanation, text, or variable name. Do not use code blocks. Do not use parentheses or tuples.
 
