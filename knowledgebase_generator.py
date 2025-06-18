@@ -114,7 +114,7 @@ def extracting_relations(text, entities, quantities):
 
     raw_output = response.choices[0].message.content
 
-    st.write(raw_output)
+    st.write(f"raw: {raw_output}")
 
     # Clean raw output from code blocks and variable assignment
     cleaned = re.sub(r"^```(?:python)?\n?", "", raw_output.strip(), flags=re.IGNORECASE)
@@ -139,7 +139,7 @@ def extracting_relations(text, entities, quantities):
         print("Cleaned output:\n", cleaned)
         relations_list = []
 
-    st.write(relations_list)
+    st.write(f"not raw: {relations_list}")
 
     return relations_list
 
@@ -305,33 +305,33 @@ def entities_human_loop(text, topic):
 
     # Extract button
     if not st.session_state.extract_clicked:
-        if st.button("Extract entities"):
+        if st.button("Extract entities-quantities"):
             st.session_state.entity_state = True
             st.session_state.entity_list = extract_entities(text, topic)
             st.session_state.extract_clicked = True
             st.rerun()
     else:
-        st.button("Extract entities", disabled=True)
+        st.button("Extract entities-quantities", disabled=True)
 
     # Entity manipulation buttons
     if st.session_state.entity_state and not st.session_state.entities_finalized:
         # Expand
-        if st.button("Expand entity list"):
+        if st.button("Expand entity-quantity list"):
             st.session_state.entity_list = helper.expand_entity_list(text, st.session_state.entity_list, topic)
             st.session_state.expand_success = True
         
         # Contract
-        if st.button("Contract entity list"):
+        if st.button("Contract entity-quantity list"):
             st.session_state.entity_list = helper.contract_entity_list(text, st.session_state.entity_list, topic)
             st.session_state.contract_success = True
 
         # Show Add input on button press
         if not st.session_state.show_add_input:
-            if st.button("Add entities"):
+            if st.button("Add entities/quantities"):
                 st.session_state.show_add_input = True
                 st.rerun()
         else:
-            st.session_state.new_entities_input = st.text_input("Add new entities, comma-separated:", value=st.session_state.new_entities_input, key="add_input_box")
+            st.session_state.new_entities_input = st.text_input("Add new entities or quantities, comma-separated:", value=st.session_state.new_entities_input, key="add_input_box")
             if st.button("Confirm add"):
                 # new_entities = [e.strip().lower() for e in st.session_state.new_entities_input.split(",") if e.strip()]
                 st.session_state.entity_list = helper.add_entities(st.session_state.entity_list, st.session_state.new_entities_input)
@@ -342,11 +342,11 @@ def entities_human_loop(text, topic):
 
         # Show remove input on button press
         if not st.session_state.show_remove_input:
-            if st.button("Remove entities"):
+            if st.button("Remove entities/quantities"):
                 st.session_state.show_remove_input = True
                 st.rerun()
         else:
-            st.session_state.remove_entities_input = st.text_input("Enter the entities you want to remove, comma-separated:", value=st.session_state.remove_entities_input, key="remove_input_box")
+            st.session_state.remove_entities_input = st.text_input("Enter the entities or quantities you want to remove, comma-separated:", value=st.session_state.remove_entities_input, key="remove_input_box")
             if st.button("Confirm removal"):
                 # new_entities = [e.strip().lower() for e in st.session_state.new_entities_input.split(",") if e.strip()]
                 st.session_state.entity_list = helper.remove_entities(st.session_state.entity_list, st.session_state.remove_entities_input)
@@ -356,16 +356,16 @@ def entities_human_loop(text, topic):
                 st.rerun()
 
     # Display entity list
-    st.write("### Current entities:")
+    st.write("### Current entity-quantity list:")
     st.write(st.session_state.entity_list if st.session_state.entity_list else "[No entities extracted yet]")
 
     # Optional success messages
     if st.session_state.get("expand_success", False):
-        st.success("Entity list expanded!")
+        st.success("Entity-quantity list expanded!")
         st.session_state.expand_success = False
 
     if st.session_state.get("contract_success", False):
-        st.success("Entity list contracted!")
+        st.success("Entity-quantity list contracted!")
         st.session_state.contract_success = False
     
     if st.session_state.entity_state and not st.session_state.entities_finalized:

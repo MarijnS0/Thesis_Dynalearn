@@ -244,7 +244,7 @@ def expand_relation_list(text, entity_list, quantity_list, relation_list, topic)
     )
 
     raw_output = response.choices[0].message.content
-    # st.write(raw_output)
+    st.write(f"raw: {raw_output}")
 
     try:
         relations_list = ast.literal_eval(raw_output.strip())
@@ -264,7 +264,7 @@ def expand_relation_list(text, entity_list, quantity_list, relation_list, topic)
         print("Raw output:\n", raw_output)
         relations_list = []
 
-    # st.write(relation_list)
+    st.write(f"not raw: {relation_list}")
 
     return relations_list
 

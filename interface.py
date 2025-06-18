@@ -6,7 +6,7 @@ import knowledgebase_generator as knowgen
 def main():
     st.set_page_config(page_title="Knowledge Representation Tool", layout="wide")
     st.title("Knowledge Representation from Educational Text")
-    st.markdown("This tool extracts **entities**, **quantities**, and **relations** from text and builds a visual knowledge graph.")
+    st.markdown("This tool extracts **entities**, **quantities**, and **relations** from text and builds a knowledge representation.")
 
     # Step 1: Text Upload
     st.header("1 Upload Educational Text")
@@ -34,24 +34,24 @@ def main():
                 st.success("Quantity extraction complete!")
                 st.header("4 Relation Extraction")
                 st.markdown("""In this step relations are formed from the entity list (entity--quantity list without the quantities)
-                             and the quantity list, based on the information provided in the text. \n
-                            
-                            Definition relationship types:
+                and the quantity list, based on the information provided in the text. \n
+                
+                Definition relationship types:
 
-                            Configuration: Represents a structural, spatial, or organizational relationship between two entities. It indicates how two entities are arranged or associated within a system.
-                            Positive influence: Indicates that an increase in the influencing element causes or promotes an increase in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
-                            Negative influence: Indicates that an increase in the influencing element causes or promotes a decrease in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
-                            Proportionally positive: Specifies a direct proportional relationship: when the influencing quantity increases, the affected quantity also increases in a directly measurable way.
-                            Proportionally negative: Specifies an inverse proportional relationship: when the influencing quantity increases, the affected quantity decreases in a directly measurable way..
-                            Has property: Indicates that a quantity, belongs to or describes an entity.
+                Configuration: Represents a structural, spatial, or organizational relationship between two entities. It indicates how two entities are arranged or associated within a system.
+                Positive influence: Indicates that an increase in the influencing element causes or promotes an increase in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
+                Negative influence: Indicates that an increase in the influencing element causes or promotes a decrease in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
+                Proportionally positive: Specifies a direct proportional relationship: when the influencing quantity increases, the affected quantity also increases in a directly measurable way.
+                Proportionally negative: Specifies an inverse proportional relationship: when the influencing quantity increases, the affected quantity decreases in a directly measurable way..
+                Has property: Indicates that a quantity, belongs to or describes an entity.
 
-                            Usage relations:
-                            Configuration: This relation can only be used between entities.
-                            Positive influence: This relation can only be used between quantities.
-                            Negative influence: This relation can only be used between quantities.
-                            Proportionally positive: This relation can only be used between quantities.
-                            Proportionally negative: This relation can only be used between quantities.
-                            Has property: This relation can only be used between an entity and a quantity.
+                Usage relations:
+                Configuration: This relation can only be used between entities.
+                Positive influence: This relation can only be used between quantities.
+                Negative influence: This relation can only be used between quantities.
+                Proportionally positive: This relation can only be used between quantities.
+                Proportionally negative: This relation can only be used between quantities.
+                Has property: This relation can only be used between an entity and a quantity.
                             """)
                 
                 entities = [item for item in entities if item not in quantities]
