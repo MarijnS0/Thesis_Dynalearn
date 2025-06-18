@@ -25,6 +25,7 @@ def expand_entity_list(text, entity_list, topic):
             {"role": "user", "content": prompt}
         ],
         temperature=0, # Makes it not random, but very predictable
+        max_tokens= 3000
     )
 
     # Extract the string content from the response object properly

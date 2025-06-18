@@ -109,7 +109,8 @@ def extracting_relations(text, entities, quantities):
         {"role": "system", "content": "You extract structured scientific relations from text between entities or quantities provided. You return these triples as a tupled python list."},
         {"role": "user", "content": prompt}
     ],
-    temperature=0
+    temperature=0,
+    max_tokens= 3000
     )
 
     raw_output = response.choices[0].message.content
