@@ -299,7 +299,7 @@ def expand_relation_list(text, entity_list, quantity_list, relation_list, topic)
     )
 
     raw_output = response.choices[0].message.content
-    st.write(f"raw: {raw_output}")
+    #st.write(f"raw: {raw_output}")
 
     try:
         relations_list = ast.literal_eval(raw_output.strip())
@@ -319,7 +319,7 @@ def expand_relation_list(text, entity_list, quantity_list, relation_list, topic)
         print("Raw output:\n", raw_output)
         relations_list = []
 
-    st.write(f"not raw: {relation_list}")
+    #st.write(f"not raw: {relation_list}")
 
     return relations_list
 
@@ -442,7 +442,8 @@ def remove_relations(relation_list, remove_relation_input):
 
     
     # Normalize input by stripping whitespace and removing surrounding brackets if present
-    clean_input = remove_relation_input.strip()
+    # clean_input = remove_relation_input.strip()
+    input_str = remove_relation_input.strip()
     # if clean_input.startswith('[') and clean_input.endswith(']'):
     #     clean_input = clean_input[1:-1]
 
