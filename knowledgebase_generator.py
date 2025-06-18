@@ -585,7 +585,7 @@ def relations_human_loop(text, entity_list, quantity_list, topic):
                 st.session_state.show_add_relation_input = True
                 st.rerun()
         else:
-            st.session_state.new_relation_input = st.text_input("Add new relations as : [object, predicate, subject]", value=st.session_state.new_relation_input, key="add_relation_input_box")
+            st.session_state.new_relation_input = st.text_input("Add new relations as : [object, predicate, subject], where predicate is the relation type (see description). Please use the right format, otherwise the relation will not be added.", value=st.session_state.new_relation_input, key="add_relation_input_box")
             if st.button("Confirm add", key="confirm_relation_add"):
                 # new_entities = [e.strip().lower() for e in st.session_state.new_entities_input.split(",") if e.strip()]
                 st.session_state.relation_list = helper.add_relations(st.session_state.relation_list, st.session_state.new_relation_input)
@@ -600,7 +600,7 @@ def relations_human_loop(text, entity_list, quantity_list, topic):
                 st.session_state.show_remove_relation_input = True
                 st.rerun()
         else:
-            st.session_state.remove_relation_input = st.text_input("Enter the relations you want to remove as: [object, predicate, subject]", value=st.session_state.remove_relation_input, key="remove_relation_input_box")
+            st.session_state.remove_relation_input = st.text_input("Enter the relations you want to remove as: [object, predicate, subject], where predicate is the relation type (see description). Please use the right format, otherwise the relation will not be removed", value=st.session_state.remove_relation_input, key="remove_relation_input_box")
             if st.button("Confirm removal", key="confirm_relation_removal"):
                 # new_entities = [e.strip().lower() for e in st.session_state.new_entities_input.split(",") if e.strip()]
                 st.session_state.relation_list = helper.remove_relations(st.session_state.relation_list, st.session_state.remove_relation_input)

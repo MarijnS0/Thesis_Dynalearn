@@ -29,7 +29,7 @@ def expand_entity_list(text, entity_list, topic):
 
     # Extract the string content from the response object properly
     content = response.choices[0].message.content
-    st.write(content)
+    # st.write(content)
 
     # Strip the ```python ... ``` block if present
     if content.startswith("```python"):
@@ -44,7 +44,7 @@ def expand_entity_list(text, entity_list, topic):
         raise e
 
     print(result_dict)
-    st.write(result_dict)
+    # st.write(result_dict)
     return list(set(result_dict['entities']))
 
 
@@ -96,7 +96,7 @@ def add_entities(entity_list, new_entities_input):
 
 def remove_entities(entity_list, remove_entities_input):
     print("remove entity")
-    st.write("in function")
+    # st.write("in function")
 
     # remove_entities_input = input("Please insert the entities you would like to remove seperated by a comma: ")
 
@@ -244,7 +244,7 @@ def expand_relation_list(text, entity_list, quantity_list, relation_list, topic)
     )
 
     raw_output = response.choices[0].message.content
-    st.write(raw_output)
+    # st.write(raw_output)
 
     try:
         relations_list = ast.literal_eval(raw_output.strip())
@@ -264,7 +264,7 @@ def expand_relation_list(text, entity_list, quantity_list, relation_list, topic)
         print("Raw output:\n", raw_output)
         relations_list = []
 
-    st.write(relation_list)
+    # st.write(relation_list)
 
     return relations_list
 

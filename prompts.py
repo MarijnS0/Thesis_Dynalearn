@@ -4,8 +4,10 @@ def entity_prompt(text, topic):
 
     Informal definition entity: An entity is a thing that exists either physically or logically. An entity may be a physical object such as an animal or a cell, an event or a process such as a response to stimuli or the conduction of impulses, or a concept such as reproduction or adaptation.
 
-    Return your answer as a valid Python dictionary where strings are in lower case with this format:
-    "entities": []
+    Rules:
+    - The list can be a maximum of 200 entities.
+    - Return your result as a valid Python dictionary: "entities": []
+    - Use only lowercase strings.
 
     Do *not include*:
     - *units of measurements*, such as meter (m), liter (L), ect.
@@ -52,6 +54,7 @@ def quantity_prompt(entity_list, text):
     - Only select items from the provided list.
     - Return your result as a valid Python dictionary: "quantities": []
     - Use only lowercase strings.
+    - The list can be a maximum of 100 quantities.
 
     Do *not include*:
     - structures, organs, types of cells, or locations unless they are being explicitly described in the given text as varying in measurable amount, level, concentration, or activity.
@@ -122,6 +125,7 @@ def relations_prompt(text, entities, quantities):
     - Every used quantity must be a property to at least one entity.
     - You do not have to use all the entities and quantities, only those that are involved in a relation, described in the given text.
     - Only use elements from the provided quantity or entity list.
+    - The list can be a maximum of 200 relations.
 
     Return a list of relations as (subject, relation_type, object) triples, where subject and object must be from the list entities or the list quantities.
     
@@ -265,6 +269,7 @@ def expansion_entities(text, entity_list, topic,  increase):
 
     - Use all entities in the current list, only add entities.
     - Only add entities that are given in the text provided.
+    - You can increase the list to be a maximum of 200 entities.
     - When all possible entities are extracted, do not increase the list further.
     
     
@@ -334,6 +339,7 @@ def expansion_quantities(text, entity_list, quantity_list, topic,  increase):
     - Use all quantities in the current list, only add quantities to the current quantity list.
     - Only add quantities that are also present in the entity list.
     - When all possible quantities are identified, do not increase the list further.
+    - You can increase the list to be a maximum of 100 quantities.
     - Return your answer as a valid Python dictionary where strings are in lower case with this format: "quantities": []
 
     Do *not include*:
