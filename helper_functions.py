@@ -90,9 +90,14 @@ def add_entities(entity_list, new_entities_input):
 
     # new_entities_input = input("Please insert the entities you would like to add seperated by a comma: ")
 
-    new_entities = new_entities_input.lower().split(",")
+    # new_entities = new_entities_input.lower().split(", ")
 
-    return list(set(entity_list + new_entities))
+    # return list(set(entity_list + new_entities))
+        # Clean and split input
+    new_entities = [e.strip().lower() for e in new_entities_input.split(",") if e.strip()]
+
+    # Combine with existing, case-insensitively
+    return list(set(e.lower() for e in entity_list) | set(new_entities))
 
 
 def remove_entities(entity_list, remove_entities_input):
@@ -101,19 +106,42 @@ def remove_entities(entity_list, remove_entities_input):
 
     # remove_entities_input = input("Please insert the entities you would like to remove seperated by a comma: ")
 
-    remove_entities = remove_entities_input.lower().split(",")
+    # remove_entities = remove_entities_input.lower().split(", ")
+
+    # not_removed = []
+
+    # for entity in remove_entities:
+        
+    #     if entity in entity_list:
+    #         entity_list.remove(entity)
+    #     else:
+    #         not_removed.append(entity)
+
+    # print(f"These entities are not removed, since they are misspelled or not in the list: {not_removed}")
+    # return entity_list
+
+        # Clean and split input
+    remove_entities = [e.strip().lower() for e in remove_entities_input.split(",") if e.strip()]
 
     not_removed = []
+    updated_list = []
 
-    for entity in remove_entities:
-        
-        if entity in entity_list:
-            entity_list.remove(entity)
+    for e in entity_list:
+        if e.lower() not in remove_entities:
+            updated_list.append(e)
         else:
-            not_removed.append(entity)
+            print(f"Removed: {e}")
 
-    print(f"These entities are not removed, since they are misspelled or not in the list: {not_removed}")
-    return entity_list
+    # Track inputs that didn't match anything
+    existing_lower = {e.lower() for e in entity_list}
+    for e in remove_entities:
+        if e not in existing_lower:
+            not_removed.append(e)
+
+    if not_removed:
+        print(f"These entities were not removed (not found or misspelled): {not_removed}")
+
+    return updated_list
 
 
 
@@ -196,29 +224,55 @@ def add_quantities(quantity_list, new_quantity_input):
 
     # new_quantity_input = input("Please insert the quantities you would like to add seperated by a comma: ")
 
-    new_quantities = new_quantity_input.lower().split(",")
+    # new_quantities = new_quantity_input.lower().split(", ")
+    new_quantities = [q.strip().lower() for q in new_quantity_input.split(",") if q.strip()]
 
-    return list(set(quantity_list + new_quantities))
+    # return list(set(quantity_list + new_quantities))
+    return list(set(q.lower() for q in quantity_list) | set(new_quantities))
 
 
 def remove_quantities(quantity_list, remove_quantity_input):
-    print("remove quantity")
+    # print("remove quantity")
 
-    # remove_quantity_input = input("Please insert the quantities you would like to remove seperated by a comma: ")
+    # # remove_quantity_input = input("Please insert the quantities you would like to remove seperated by a comma: ")
 
-    remove_quantity = remove_quantity_input.lower().split(",")
+    # remove_quantity = remove_quantity_input.lower().split(", ")
 
-    not_removed = []
+    # not_removed = []
 
-    for quantity in remove_quantity:
+    # for quantity in remove_quantity:
         
-        if quantity in quantity_list:
-            quantity_list.remove(quantity)
-        else:
-            not_removed.append(quantity)
+    #     if quantity in quantity_list:
+    #         quantity_list.remove(quantity)
+    #     else:
+    #         not_removed.append(quantity)
 
-    print(f"These quantities are not removed, since they are misspelled or not in the list: {not_removed}")
-    return quantity_list
+    # print(f"These quantities are not removed, since they are misspelled or not in the list: {not_removed}")
+    # return quantity_list
+    #print("remove quantity")
+
+    # Parse and clean input
+    remove_quantities = [q.strip().lower() for q in remove_quantity_input.split(",") if q.strip()]
+    
+    not_removed = []
+    updated_list = []
+
+    for q in quantity_list:
+        if q.lower() not in remove_quantities:
+            updated_list.append(q)
+        else:
+            print(f"Removed: {q}")
+
+    # Track any input items that didn't match
+    existing_lower = {q.lower() for q in quantity_list}
+    for q in remove_quantities:
+        if q not in existing_lower:
+            not_removed.append(q)
+
+    if not_removed:
+        print(f"These quantities were not removed (not found or misspelled): {not_removed}")
+
+    return updated_list
 
 
 
@@ -333,16 +387,25 @@ def add_relations(relation_list, new_relation_input):
 
     # Prepare input string
     input_str = new_relation_input.strip()
-    if input_str.startswith('[') and input_str.endswith(']'):
-        input_str = input_str[1:-1]
 
-    # Split into raw triples
-    triples_raw = re.split(r'\]\s*,\s*\[', input_str)
+    # if input_str.startswith('[') and input_str.endswith(']'):
+    #     input_str = input_str[1:-1]
+
+    # # Split into raw triples
+    # triples_raw = re.split(r'\]\s*,\s*\[', input_str)
+
+     # Add outer brackets if missing
+    if not (input_str.startswith('[') and input_str.endswith(']')):
+        input_str = f"[{input_str}]"
+
+    # Split on '], [' while keeping each triple
+    triples_raw = re.split(r'\],\s*\[', input_str.strip()[1:-1])  # strip outer [ ]
 
     raw_triples = []
     for triple_raw in triples_raw:
-        triple_clean = triple_raw.strip(' []')
-        parts = [p.strip().lower() for p in triple_clean.split(',')]
+        # triple_clean = triple_raw.strip(' []')
+        # parts = [p.strip().lower() for p in triple_clean.split(',')]
+        parts = [p.strip().lower() for p in triple_raw.strip('[]').split(',')]
         if len(parts) != 3:
             continue  # invalid triple length, skip
         subj, pred, obj = parts
@@ -380,15 +443,24 @@ def remove_relations(relation_list, remove_relation_input):
     
     # Normalize input by stripping whitespace and removing surrounding brackets if present
     clean_input = remove_relation_input.strip()
-    if clean_input.startswith('[') and clean_input.endswith(']'):
-        clean_input = clean_input[1:-1]
+    # if clean_input.startswith('[') and clean_input.endswith(']'):
+    #     clean_input = clean_input[1:-1]
 
-    # Split into relation triples by ']['
-    raw_relations = clean_input.split('][')
+    # # Split into relation triples by ']['
+    # raw_relations = clean_input.split('][')
+
+    # Add outer brackets if missing
+    if not (input_str.startswith('[') and input_str.endswith(']')):
+        input_str = f"[{input_str}]"
+
+    # Split into individual triple strings
+    raw_triples = re.split(r'\],\s*\[', input_str[1:-1])  # strip outer brackets
+
 
     relations_to_remove = []
-    for raw_rel in raw_relations:
-        parts = [part.strip().lower() for part in raw_rel.split(',')]
+    for raw_triple in raw_triples:
+        # parts = [part.strip().lower() for part in raw_rel.split(',')]
+        parts = [p.strip().lower() for p in raw_triple.strip('[]').split(',')]
         # Validate triple format
         if len(parts) == 3:
             relations_to_remove.append(tuple(parts))

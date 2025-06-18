@@ -38,20 +38,20 @@ def main():
                 
                 Definition relationship types:
 
-                Configuration: Represents a structural, spatial, or organizational relationship between two entities. It indicates how two entities are arranged or associated within a system.
-                Positive influence: Indicates that an increase in the influencing element causes or promotes an increase in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
-                Negative influence: Indicates that an increase in the influencing element causes or promotes a decrease in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
-                Proportionally positive: Specifies a direct proportional relationship: when the influencing quantity increases, the affected quantity also increases in a directly measurable way.
-                Proportionally negative: Specifies an inverse proportional relationship: when the influencing quantity increases, the affected quantity decreases in a directly measurable way..
-                Has property: Indicates that a quantity, belongs to or describes an entity.
+                configuration: Represents a structural, spatial, or organizational relationship between two entities. It indicates how two entities are arranged or associated within a system.
+                positive influence: Indicates that an increase in the influencing element causes or promotes an increase in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
+                negative influence: Indicates that an increase in the influencing element causes or promotes a decrease in the influenced element. The effect may be indirect or qualitative, not strictly proportional.
+                proportionally positive: Specifies a direct proportional relationship: when the influencing quantity increases, the affected quantity also increases in a directly measurable way.
+                proportionally negative: Specifies an inverse proportional relationship: when the influencing quantity increases, the affected quantity decreases in a directly measurable way..
+                has property: Indicates that a quantity, belongs to or describes an entity.
 
                 Usage relations:
-                Configuration: This relation can only be used between entities.
-                Positive influence: This relation can only be used between quantities.
-                Negative influence: This relation can only be used between quantities.
-                Proportionally positive: This relation can only be used between quantities.
-                Proportionally negative: This relation can only be used between quantities.
-                Has property: This relation can only be used between an entity and a quantity.
+                configuration: This relation can only be used between entities.
+                positive influence: This relation can only be used between quantities.
+                negative influence: This relation can only be used between quantities.
+                proportionally positive: This relation can only be used between quantities.
+                proportionally negative: This relation can only be used between quantities.
+                has property: This relation can only be used between an entity and a quantity.
                             """)
                 
                 entities = [item for item in entities if item not in quantities]
