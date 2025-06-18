@@ -101,11 +101,11 @@ def extract_quantities(entity_list, text):
 
 # extract the relations
 def extracting_relations(text, entities, quantities):
-    st.write(f"extracting_relations called with {len(text)} chars, {len(entities)} entities, {len(quantities)} quantities")
+    #st.write(f"extracting_relations called with {len(text)} chars, {len(entities)} entities, {len(quantities)} quantities")
 
 
     prompt = p.relations_prompt(text, entities, quantities)
-    st.write("got prompt")
+    # st.write("got prompt")
     response = client.chat.completions.create(
     model="gpt-4o",
     messages=[
@@ -116,12 +116,12 @@ def extracting_relations(text, entities, quantities):
     max_tokens= 3000
     )
 
-    st.write("out of call")
+    # st.write("out of call")
     raw_output = response.choices[0].message.content
 
     # st.write(f"raw: {raw_output}")
-    st.write("printing raw")
-    st.write(f"raw (repr): {repr(raw_output)}")
+    # st.write("printing raw")
+    # st.write(f"raw (repr): {repr(raw_output)}")
 
 
     # Clean raw output from code blocks and variable assignment
@@ -130,7 +130,7 @@ def extracting_relations(text, entities, quantities):
     cleaned = re.sub(r"^\s*\w+\s*=\s*", "", cleaned.strip())
 
     try:
-        st.write("in try")
+        # st.write("in try")
         relations_list = ast.literal_eval(cleaned)
 
          # Remove duplicates from list of lists
@@ -144,12 +144,12 @@ def extracting_relations(text, entities, quantities):
         relations_list = unique_relations
 
     except Exception as e:
-        st.write("Failed to parse cleaned model output")
+        # st.write("Failed to parse cleaned model output")
         print("Failed to parse cleaned model output:", e)
         print("Cleaned output:\n", cleaned)
         relations_list = []
 
-    st.write(f"not raw: {relations_list}")
+    # st.write(f"not raw: {relations_list}")
 
     return relations_list
 
