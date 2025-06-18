@@ -101,6 +101,8 @@ def extract_quantities(entity_list, text):
 
 # extract the relations
 def extracting_relations(text, entities, quantities):
+    st.write(f"extracting_relations called with {len(text)} chars, {len(entities)} entities, {len(quantities)} quantities")
+
 
     prompt = p.relations_prompt(text, entities, quantities)
     response = client.chat.completions.create(
@@ -115,7 +117,9 @@ def extracting_relations(text, entities, quantities):
 
     raw_output = response.choices[0].message.content
 
-    st.write(f"raw: {raw_output}")
+    # st.write(f"raw: {raw_output}")
+    st.write(f"raw (repr): {repr(raw_output)}")
+
 
     # Clean raw output from code blocks and variable assignment
     cleaned = re.sub(r"^```(?:python)?\n?", "", raw_output.strip(), flags=re.IGNORECASE)
